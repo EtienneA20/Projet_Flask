@@ -27,10 +27,11 @@ interaction avec la base dans le terminal afin de faire des requetes type sql en
 
 
 
-## Cours du 17/09:  (tp3)  
+## Cours du 17/09:  (tp3, tp4)  
 
 création du premier templates (index) avec un code html  
 ajout d'un fichier style.css que j'ai relié à la page html  
 ajout de la page contact ( fin tp1)  
 création et liaison d'un fichier html pour la page contact et about  
-
+mise en place d'un heritage entre les 3 fichier html pour factoriser le code  
+gestion des url dynamiques  
