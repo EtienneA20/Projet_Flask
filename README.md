@@ -1,27 +1,36 @@
-Audor
-Etienne
+**Audor Etienne**  
+**groupe 2A**
+
+# Projet_Flask  
+
+> **Commande  bash utile:**  
+> *pip freeze > requirement.txt*  
+> *flask run*  
+> *source venv/bin/activate*
 
 
-# Projet_Flask
+## Cours du 3/09: (tp1)  
 
-commande  bash utile:
-pip freeze > requirement.txt
-flask run 
-
-
-cours du 3/09:
-
-paramettre du depot git 
-mise en place du venv avec les diffrentes instalations
-création de 2 page web vide
-utilisation des bonnes pratique en flask 
+paramettre du depot git  
+mise en place du venv avec les diffrentes instalations  
+création de 2 page web vide  
+utilisation des bonnes pratique en flask   
 
 
 
 
-cours du 10/09:
+## Cours du 10/09: (tp2)  
 
 mise en place de la base de données avec
 les 2 classes et la jeu de données recuperer sur celene
+interaction avec la base dans le terminal afin de faire des requetes type sql en commande pyton  
 
-interaction avec la base dans le terminal afin de faire des requetes type sql en commande pyton 
+
+
+## Cours du 17/09:  (tp3)  
+
+création du premier templates (index) avec un code html  
+ajout d'un fichier style.css que j'ai relié à la page html  
+ajout de la page contact ( fin tp1)  
+création et liaison d'un fichier html pour la page contact et about  
+
