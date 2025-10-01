@@ -44,3 +44,12 @@ meme chose pour un tableau de livre
 amélioration de l'interface grace au nouveau template base.html et l'ajout
 de variable dans le fichier style.css  
 
+## Cours du 01/10: (tp5)
+
+Instalation de flack wtf  
+Utilisation de flaskForm sur la table Auteur  
+Ajout d'un module pour voir un auteur  
+Ajout d'un autre module pour le modifier via la liste d'auteur  
+Ajout d'un bouton supprimer  
+Liaison avec un template et une fonction pour interagir avec la base de donnée  
+Debut de l'ajout des memes fonctionnalité avec la table Livre  
