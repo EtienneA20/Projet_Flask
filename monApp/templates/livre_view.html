@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block main %}
-<h1 >Consultation du livre {{ selectedLivre.Titre }} ecrit par {{selectedLivre.Auteur}}</h1>
+<h1> Consultation du livre {{ selectedLivre.Titre }} <br> ecrit par {{selectedLivre.auteur.Nom}} <br> au prix de {{selectedLivre.Prix}} €</h1>
+</div>
 <form role="form" method="POST" action="">
 <a href="{{ url_for('getLivres') }}" class="btn btn-secondary">Retour</a>
 </form >

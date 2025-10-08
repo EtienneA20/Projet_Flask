@@ -1,22 +1,21 @@
 {% extends "base.html" %}
 {% block main %}
 <h1 >Modification du livre {{ selectedLivre.Titre }}</h1>
-<p>Le pri</p>
 <form role="form" method="POST" action="{{ url_for ('saveLivre') }}">
 {{ updateForm.hidden_tag () }}
 <div
-{% if updateForm.Nom.errors %}
+{% if updateForm.Prix.errors %}
 class="form-group has-error"
 {% else %}
 class="form-group mb-3"
 {% endif %}
 >
-{{ updateForm.Nom.label }}
-{{ updateForm.Nom(size =50, class_="form-control") }}
+{{ updateForm.Prix.label }}
+{{ updateForm.Prix(size =50, class_="form-control") }}
 </div>
-{% if updateForm.Nom.errors %}
+{% if updateForm.Prix.errors %}
 <ul class ="list-group">
-{% for e in updateForm.Nom.errors %}
+{% for e in updateForm.Prix.errors %}
 <li class ="list-group-item list-group-item-danger" >{{ e }} </li >
 {% endfor %}
 </ul >

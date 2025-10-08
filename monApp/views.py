@@ -16,12 +16,12 @@ def index():
         return render_template("index.html",title=TITLE,name=param_name)
 
 @app.route("/about")
-def about():
+def getabout():
     return render_template("about.html",title =TITLE,var=ABOUT)
 
 
 @app.route("/contact")
-def contact():
+def getcontact():
     return render_template("contact.html",title =TITLE,var=CONTACT)
 
 @app.route('/auteurs/')
@@ -98,8 +98,8 @@ def getLivres():
 @app.route('/livres/<idL>/view/')
 def viewLivre(idL):
     unLivre = Livre.query.get(idL)
-    unForm = FormAuteur (idL=unLivre.idL , Titre=unLivre.Titre)
-    return render_template("livre_view.html",selectedlivre=unLivre, viewForm=unForm)
+    unForm = FormLivre(idL=unLivre.idL , Titre=unLivre.Titre , Auteur=unLivre.auteur)
+    return render_template("livre_view.html",selectedLivre=unLivre, viewForm=unForm)
 
 @app.route('/livres/<idL>/update/')
 def updateLivre(idL):
@@ -110,13 +110,13 @@ def updateLivre(idL):
 @app.route ('/livre/save/', methods =("POST" ,))
 def saveLivre():
     updatedLivre = None
-    unForm = FormAuteur()
-    #recherche de l'auteur à modifier
+    unForm = FormLivre()
+    #recherche de l'livre à modifier
     idL = int(unForm.idL.data)
     updatedLivre = Livre.query.get(idL)
     #si les données saisies sont valides pour la mise à jour
     if unForm.validate_on_submit():
-        updatedLivre.Titre = unForm.Titre.data
+        updatedLivre.Prix = unForm.Prix.data
         db.session.commit()
         return redirect(url_for('viewLivre', idL=updatedLivre.idL))
     return render_template("livre_update.html",selectedLivre=updatedLivre, updateForm=unForm)

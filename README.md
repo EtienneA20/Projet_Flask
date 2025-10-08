@@ -53,3 +53,9 @@ Ajout d'un autre module pour le modifier via la liste d'auteur
 Ajout d'un bouton supprimer  
 Liaison avec un template et une fonction pour interagir avec la base de donnée  
 Debut de l'ajout des memes fonctionnalité avec la table Livre  
+
+## Cours du 08/10: (tp5, tp6)
+
+correction de la page about et contact (css)  
+fin de la page viewLivre avec le detail du livre  
+fin de la page updateLivre qui redirige vers viewLivre une fois le prix validé  

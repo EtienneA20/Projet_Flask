@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, HiddenField
+from wtforms import StringField, HiddenField , FloatField
 from wtforms.validators import DataRequired
 
 class FormAuteur(FlaskForm):
@@ -8,5 +8,6 @@ class FormAuteur(FlaskForm):
 
 class FormLivre(FlaskForm):
     idL=HiddenField('idL')
-    Titre = StringField ('Titre', validators =[DataRequired()])
-    Prix = StringField ('Prix')
+    Titre = StringField ('Titre')
+    Auteur = StringField('auteur')
+    Prix = FloatField('Prix')
