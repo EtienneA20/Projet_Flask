@@ -58,4 +58,6 @@ Debut de l'ajout des memes fonctionnalité avec la table Livre
 
 correction de la page about et contact (css)  
 fin de la page viewLivre avec le detail du livre  
-fin de la page updateLivre qui redirige vers viewLivre une fois le prix validé  
+fin de la page updateLivre qui redirige vers viewLivre une fois le pri validé  
+ajout de la commande syncdb  
+ajout de la commande newpasswrd  
