@@ -62,7 +62,7 @@ fin de la page updateLivre qui redirige vers viewLivre une fois le pri validé
 ajout de la commande syncdb  
 ajout de la commande newpasswrd  
 
-## travail maison du 12/10: (tp6)
+## travail maison du 12/10: (tp6, tp7)
 
 mise en place du login fonctionnel  
 suppression des fonction d'edition,d'insetion et de suppression d'auteurs et de livres
@@ -70,3 +70,5 @@ si l'utilisateur n'est pas connecter
 redirection vers une page de login si un utilisateur non connecter veut acceder a une
 page interdite via l'URL  
 redirection vers la page associé a l'action choisi juste avant de s'etre connecté  
+initialisation de pytest  
+debut des tests sur Auteur  
