@@ -2,8 +2,9 @@ from .app import app
 from config import ABOUT,CONTACT,TITLE
 from flask import render_template,request,url_for,redirect
 from monApp.models import Auteur,Livre
-from monApp.forms import FormAuteur,FormLivre
+from monApp.forms import FormAuteur,FormLivre,LoginForm
 from .app import db
+from flask_login import logout_user,login_user,login_required
 
 @app.route('/')
 @app.route('/index/')
@@ -30,11 +31,13 @@ def getAuteurs():
      return render_template('auteurs_list.html', title="R3.01 Dev Web avec Flask", auteurs=lesAuteurs)
 
 @app.route('/auteur/')
+@login_required
 def createAuteur():
     unForm = FormAuteur()
     return render_template("auteur_create.html", createForm=unForm)
 
 @app.route('/auteurs/<idA>/update/')
+@login_required
 def updateAuteur(idA):
     unAuteur = Auteur.query.get(idA)
     unForm = FormAuteur(idA=unAuteur.idA , Nom=unAuteur.Nom)
@@ -73,6 +76,7 @@ def insertAuteur():
     return render_template("auteur_create.html", createForm=unForm)
 
 @app.route('/auteurs/<idA>/delete/')
+@login_required
 def deleteAuteur(idA):
     unAuteur = Auteur.query.get(idA)
     unForm = FormAuteur(idA=unAuteur.idA, Nom=unAuteur.Nom)
@@ -102,6 +106,7 @@ def viewLivre(idL):
     return render_template("livre_view.html",selectedLivre=unLivre, viewForm=unForm)
 
 @app.route('/livres/<idL>/update/')
+@login_required
 def updateLivre(idL):
     unLivre = Livre.query.get(idL)
     unForm = FormLivre(idL=unLivre.idL , Titre=unLivre.Titre,Prix=unLivre.Prix)
@@ -120,6 +125,26 @@ def saveLivre():
         db.session.commit()
         return redirect(url_for('viewLivre', idL=updatedLivre.idL))
     return render_template("livre_update.html",selectedLivre=updatedLivre, updateForm=unForm)
+
+@app.route ("/login/", methods =("GET","POST" ,))
+def login():
+    unForm = LoginForm ()
+    unUser=None
+    if not unForm.is_submitted():
+        unForm.next.data = request.args.get('next')
+    elif unForm.validate_on_submit():
+        unUser = unForm.get_authenticated_user()
+        if unUser:
+            login_user(unUser)
+            next = unForm.next.data or url_for("index",name=unUser.Login)
+            return redirect (next)
+    return render_template ("login.html",form=unForm)
+
+
+@app.route ("/logout/")
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
 
 if __name__ == "__main__":
     app.run()
