@@ -1,6 +1,7 @@
 from .app import app
 from config import ABOUT,CONTACT,TITLE
-from flask import render_template,request,url_for,redirect
+from sqlalchemy.exc import IntegrityError
+from flask import render_template,request,url_for,redirect,flash
 from monApp.models import Auteur,Livre
 from monApp.forms import FormAuteur,FormLivre,LoginForm
 from .app import db
@@ -56,14 +57,14 @@ def saveAuteur():
         db.session.commit()
         return redirect(url_for('viewAuteur', idA=updatedAuteur.idA))
     return render_template("auteur_update.html",selectedAuteur=updatedAuteur, updateForm=unForm)
-
+ 
 @app.route('/auteurs/<idA>/view/')
 def viewAuteur(idA):
     unAuteur = Auteur.query.get(idA)
     unForm = FormAuteur (idA=unAuteur.idA , Nom=unAuteur.Nom)
     return render_template("auteur_view.html",selectedAuteur=unAuteur, viewForm=unForm)
 
-@app.route ('/auteur/insert/', methods =("POST" ,))
+""" @app.route ('/auteur/insert/', methods =("POST" ,))
 def insertAuteur():
     insertedAuteur = None
     unForm = FormAuteur()
@@ -73,6 +74,20 @@ def insertAuteur():
         db.session.commit()
         insertedId = Auteur.query.count()
         return redirect(url_for('viewAuteur', idA=insertedId))
+    return render_template("auteur_create.html", createForm=unForm)
+ """
+@app.route('/auteur/insert/', methods=('POST',))
+def insertAuteur():
+    unForm = FormAuteur()
+    if unForm.validate_on_submit():
+        nom_auteur = unForm.Nom.data.strip()
+        auteur_existant = Auteur.query.filter_by(Nom=nom_auteur).first()
+        if auteur_existant:
+            return render_template("auteur_create.html", createForm=unForm)
+        insertedAuteur = Auteur(Nom=nom_auteur)
+        db.session.add(insertedAuteur)
+        db.session.commit()
+        return redirect(url_for('viewAuteur', idA=insertedAuteur.idA))
     return render_template("auteur_create.html", createForm=unForm)
 
 @app.route('/auteurs/<idA>/delete/')
@@ -125,6 +140,7 @@ def saveLivre():
         db.session.commit()
         return redirect(url_for('viewLivre', idL=updatedLivre.idL))
     return render_template("livre_update.html",selectedLivre=updatedLivre, updateForm=unForm)
+
 
 @app.route ("/login/", methods =("GET","POST" ,))
 def login():

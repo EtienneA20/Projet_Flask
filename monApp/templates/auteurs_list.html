@@ -12,6 +12,7 @@
 <th>Nom</th>
 <th>Nombre de livres</th>
 <th>Actions possibles</th>
+<th>Livres écrit</th>
 </tr>
 </thead>
 <tbody>
@@ -28,6 +29,17 @@ Voir <i class="fas fa-eye"></i></a>
 <a href="{{ url_for('deleteAuteur', idA=unAuteur.idA) }}" class="btn btn-danger">Supprimer <i class="fas fa-trash"></i></a> 
 {% endif %}
 </div>
+</td>
+<td>
+    {% if unAuteur.livres.count() > 0 %}
+        <ul>
+        {% for livre in unAuteur.livres %}
+            <li>{{ livre.Titre }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucun livre écrit par cet auteur.</p>
+    {% endif %}
 </td>
 </tr>
 {% endfor %}
