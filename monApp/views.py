@@ -64,18 +64,6 @@ def viewAuteur(idA):
     unForm = FormAuteur (idA=unAuteur.idA , Nom=unAuteur.Nom)
     return render_template("auteur_view.html",selectedAuteur=unAuteur, viewForm=unForm)
 
-""" @app.route ('/auteur/insert/', methods =("POST" ,))
-def insertAuteur():
-    insertedAuteur = None
-    unForm = FormAuteur()
-    if unForm.validate_on_submit():
-        insertedAuteur = Auteur(Nom=unForm.Nom.data)
-        db.session.add(insertedAuteur)
-        db.session.commit()
-        insertedId = Auteur.query.count()
-        return redirect(url_for('viewAuteur', idA=insertedId))
-    return render_template("auteur_create.html", createForm=unForm)
- """
 @app.route('/auteur/insert/', methods=('POST',))
 def insertAuteur():
     unForm = FormAuteur()
@@ -144,7 +132,8 @@ def saveLivre():
 
 @app.route ("/login/", methods =("GET","POST" ,))
 def login():
-    unForm = LoginForm ()
+    print("Form data:", request.form)
+    unForm = LoginForm()
     unUser=None
     if not unForm.is_submitted():
         unForm.next.data = request.args.get('next')
@@ -153,8 +142,8 @@ def login():
         if unUser:
             login_user(unUser)
             next = unForm.next.data or url_for("index",name=unUser.Login)
-            return redirect (next)
-    return render_template ("login.html",form=unForm)
+            return redirect(next)
+    return render_template("login.html",form=unForm)
 
 
 @app.route ("/logout/")

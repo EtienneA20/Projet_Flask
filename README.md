@@ -83,3 +83,26 @@ debut des tests sur Auteur
 
 mise en place d'une barriere pour empecher l'ajout d'un auteur avec le meme nom  
 affichage des livres ecrit par chaque auteurs  
+
+## travail maison du 15/10: (tp7)
+
+test sur les attribut de la Class et table Livre  
+test sur les attribut de la Class et de la table User  
+test des routes pour la gestion et modification des auteurs  
+test sur la redirection des routes après l'identification  
+test sur view Auteur  
+test sur suppression d'un auteur avant et après l'identification  
+test sur la creation des auteurs  
+test sur tout les commandes flask (loaddb,syncdb,newuser,newpasswrd)  
+
+## Score final pytest **88%**
+### Detail :
+>Name                 Stmts   Miss  Cover   Missing
+>--------------------------------------------------
+>monApp\app.py           11      0   100%  
+>monApp\commands.py      53      0   100%  
+>monApp\forms.py         25      0   100%  
+>monApp\models.py        33      0   100%  
+>monApp\views.py        126     29    77%   : 14-18, 22, 27, 59, 74, 79, 102-103, 107-109, 114-116, 120-130, 151-152, 155  
+>--------------------------------------------------  
+

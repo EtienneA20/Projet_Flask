@@ -12,7 +12,7 @@ def loaddb(filename):
     # chargement de notre jeu de données
     import yaml
     with open(filename, 'r') as file:
-        lesLivres = yaml.safe_load(file) 
+        lesLivres = yaml.safe_load(file)
 
     # import des modèles
     from . models import Auteur,Livre
@@ -37,13 +37,13 @@ def loaddb(filename):
             auteur_id = auteur.idA)
         db.session.add(objet)
     db.session.commit()
-    lg.warning('Database initialized!')
+    click.echo('Database initialized!')   #j'ai changer les lg.warning en click.echo verifier lors des tests
 
 @app.cli. command ()
 def syncdb():
     '''Creates all missing tables . '''
     db.create_all()
-    lg.warning('Database synchronized!')
+    click.echo('Database synchronized!')
 
 @app.cli.command()
 @click.argument('login')
@@ -57,7 +57,7 @@ def newuser (login, pwd):
     unUser = User(Login=login ,Password =m.hexdigest())
     db.session.add(unUser)
     db.session.commit()
-    lg.warning('User ' + login + ' created!')
+    click.echo(f'User {login} created!')
 
 @app.cli.command()
 @click.argument('login')
@@ -71,4 +71,4 @@ def newpasswrd(login,newpwd):
     unUser = User.query.get(login)
     unUser.Password=m.hexdigest()
     db.session.commit()
-    lg.warning('User ' + login + ' updated!')
+    click.echo(f'User {login} updated!')
