@@ -6,7 +6,13 @@
 > **Commande  bash utile:**  
 > *pip freeze > requirement.txt*  
 > *flask run*  
-> *source venv/bin/activate*
+> *source venv/bin/activate*  
+> *flask loaddb monApp/data/data.yml*  
+> *flask newuser Cricri azerty123*  
+> *flask newpasswrd Cricri legarsdu41*  
+> *coverage run -m pytest*  
+> *coverage report -m*  
+> *coverage html*  
 
 
 ## Cours du 3/09: (tp1)  
@@ -72,3 +78,8 @@ page interdite via l'URL
 redirection vers la page associé a l'action choisi juste avant de s'etre connecté  
 initialisation de pytest  
 debut des tests sur Auteur  
+
+## travail du 15/10: (tp7 + bonnus)
+
+mise en place d'une barriere pour empecher l'ajout d'un auteur avec le meme nom  
+affichage des livres ecrit par chaque auteurs  
