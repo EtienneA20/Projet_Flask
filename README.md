@@ -103,6 +103,6 @@ test sur tout les commandes flask (loaddb,syncdb,newuser,newpasswrd)
 >monApp\commands.py      53      0   100%  
 >monApp\forms.py         25      0   100%  
 >monApp\models.py        33      0   100%  
->monApp\views.py        126     29    77%   : 14-18, 22, 27, 59, 74, 79, 102-103, 107-109, 114-116, 120-130, 151-152, 155  
+>monApp/views.py        128     20    84%   17-18, 61, 76, 81, 116-118, 122-132, 153-154, 157
 >--------------------------------------------------  
-
+>TOTAL                  250     20    92%

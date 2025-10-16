@@ -18,11 +18,13 @@ def index():
         return render_template("index.html",title=TITLE,name=param_name)
 
 @app.route("/about")
+@app.route("/about/")
 def getabout():
     return render_template("about.html",title =TITLE,var=ABOUT)
 
 
 @app.route("/contact")
+@app.route("/contact/")
 def getcontact():
     return render_template("contact.html",title =TITLE,var=CONTACT)
 
